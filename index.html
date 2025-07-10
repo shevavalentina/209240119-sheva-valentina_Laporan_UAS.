@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>claudya sheva</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+
+<header id="home">
+  <h1>claudya sheva</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#produk">Produk</a>
+    <a href="#keranjang">Keranjang</a>
+    <a href="#kontak">Kontak</a>
+  </nav>
+</header>
+
+<!-- Halaman home -->
+<main>
+  <div class="hero">
+    <video autoplay muted loop playsinline width="100%" style="max-height: 500px; object-fit: cover;">
+      <source src="WhatsApp Video 2025-07-06 at 07.53.47.mp4" type="video/mp4">
+    </video>
+  </div>
+</main>
+
+<!-- Halaman produk -->
+<main id="produk">
+  <h2>Daftar Produk</h2>
+  <div class="produk-list">
+    <div class="produk">
+      <img src="hampres.jpeg" alt="Produk 1">
+      <h3>Hampers Gift Box souvenir buket bunga kupu-kupu</h3>
+      <p>Rp40.000</p>
+      <p>Hampers box untuk gift bermodel elegan dengan isian buket bunga kupu-kupu.</p>
+      <button onclick="tambahKeKeranjang('Hampers Gift Box souvenir buket bunga kupu-kupu', 40000)">Tambah ke Keranjang</button>
+    </div>
+    <div class="produk">
+      <img src="kering.jpeg" alt="Produk 2">
+      <h3>Buket Bunga Kering</h3>
+      <p>Rp80.000</p>
+      <p>Bunga asli yang sudah dikeringkan dan diwarnai (bisa tahan sampai bertahun-tahun) dengan detail bunga edelweiss jawa.</p>
+      <button onclick="tambahKeKeranjang('Buket Bunga Kering', 80000)">Tambah ke Keranjang</button>
+    </div>
+    <div class="produk">
+      <img src="WhatsApp Image 2025-07-05 at 09.38.51 (1).jpeg" alt="Produk 3">
+      <h3>Graduation bouqet Triple Soup and Dried flower bouqet.</h3>
+      <p>Rp35.000</p>
+      <p>3PCS bunga mawar sabun dalam 1 buket dengan tambahan bunga kering limonium dan kartu ucapan.</p>
+      <button onclick="tambahKeKeranjang('Graduation bouqet Triple Soup and Dried flower bouqet', 35000)">Tambah ke Keranjang</button>
+    </div>
+    <div class="produk">
+      <img src="kupu-kupu.jpeg" alt="Produk 4">
+      <h3>Buket kupu-kupu.</h3>
+      <p>Rp55.000</p>
+      <p>Desain menarik cocok untuk kado.</p>
+      <button onclick="tambahKeKeranjang('Buket kupu-kupu', 55000)">Tambah ke Keranjang</button>
+    </div>
+    <div class="produk">
+      <img src="buket 2.jpeg" alt="Produk 5">
+      <h3>Buket bunga pita satin bentuk love</h3>
+      <p>Rp65.000</p>
+      <p>Buket bunga dengan isi 19 kuntum mawar, bisa request free kupu-kupu.</p>
+      <button onclick="tambahKeKeranjang('Buket bunga pita satin bentuk love', 65000)">Tambah ke Keranjang</button>
+    </div>
+  </div>
+</main>
+
+<!-- Halaman keranjang -->
+<main id="keranjang" style="background-color: #ffe6ea; padding: 20px; border-radius: 10px; margin: 20px;">
+  <h2>Isi Keranjang:</h2>
+  <table style="width: 100%; border-collapse: collapse; background: #fff;">
+    <thead>
+      <tr style="background-color: #f8c4cc;">
+        <th style="padding: 10px;">Produk</th>
+        <th style="padding: 10px;">Harga</th>
+      </tr>
+    </thead>
+    <tbody id="daftar-keranjang"></tbody>
+    <tfoot style="background-color: #f8c4cc;">
+      <tr>
+        <td style="padding: 10px;"><strong>Total Item</strong></td>
+        <td style="padding: 10px;" id="total-item">0 produk</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px;"><strong>Total Harga</strong></td>
+        <td style="padding: 10px;" id="total-harga">Rp0</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <button onclick="kosongkanKeranjang()" style="background-color: #f44336; color: white; padding: 10px; border: none; border-radius: 5px; margin-right: 10px;">Kosongkan Keranjang</button>
+    <button onclick="checkoutWhatsApp()" style="background-color: #e91e63; color: white; padding: 10px; border: none; border-radius: 5px;">Kirim via WhatsApp</button>
+  </div>
+</main>
+
+<!-- Halaman footer -->
+<main id="kontak">
+  <footer>
+    <p>Kontak: claudysheva@email.com | 0859-3927-8166 | Cimanggung</p>
+  </footer>
+</main>
+<p class="copyright">
+  &copy; 2025 Claudya Sheva. All rights reserved.
+</p>
+
+
+
+<!-- JavaScript -->
+<script>
+  let keranjang = [];
+
+  function tambahKeKeranjang(nama, harga) {
+    keranjang.push({ nama, harga });
+    tampilkanKeranjang();
+
+    // Scroll ke keranjang
+    document.getElementById("keranjang").scrollIntoView({ behavior: "smooth" });
+  }
+
+  function tampilkanKeranjang() {
+    const tbody = document.getElementById("daftar-keranjang");
+    const totalHargaEl = document.getElementById("total-harga");
+    const totalItemEl = document.getElementById("total-item");
+
+    tbody.innerHTML = "";
+
+    let totalHarga = 0;
+
+    keranjang.forEach(item => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td style="padding: 10px;">${item.nama}</td>
+        <td style="padding: 10px;">Rp${item.harga.toLocaleString("id-ID")}</td>
+      `;
+      tbody.appendChild(row);
+      totalHarga += item.harga;
+    });
+
+    totalItemEl.textContent = `${keranjang.length} produk`;
+    totalHargaEl.textContent = `Rp${totalHarga.toLocaleString("id-ID")}`;
+  }
+
+  function kosongkanKeranjang() {
+    keranjang = [];
+    tampilkanKeranjang();
+  }
+
+  function checkoutWhatsApp() {
+    if (keranjang.length === 0) {
+      alert("Keranjang masih kosong!");
+      return;
+    }
+
+    let pesan = "Halo! Saya ingin memesan:%0A";
+    keranjang.forEach((item, i) => {
+      pesan += `${i + 1}. ${item.nama} - Rp${item.harga.toLocaleString("id-ID")}%0A`;
+    });
+
+    let total = keranjang.reduce((sum, item) => sum + item.harga, 0);
+    pesan += `%0ATotal: Rp${total.toLocaleString("id-ID")}`;
+
+    const link = `https://wa.me/6285939278166?text=${pesan}`;
+    window.open(link, "_blank");
+  }
+</script>
+
+</body>
+</html>
