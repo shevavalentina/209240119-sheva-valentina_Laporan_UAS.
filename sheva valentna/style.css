@@ -1,0 +1,100 @@
+body {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:#f3e8d6;
+  overflow-x: hidden;
+}
+
+header, footer {
+  background-color: #c480a3;
+  color: rgb(6, 5, 5);
+  padding: 2rem;
+  text-align: center;
+  font-family: 'Freestyle Script', Times, serif, sans-serif;
+  font-size: 2rem;
+}
+
+nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+Halaman home
+.hero {text-align: center;
+        margin-top: 20px;}
+.hero-image {max-width: 100%;
+             height: 100px;
+             width: 1220px;
+             padding: 20px;
+            border-radius: 10px;}
+
+
+Halaman produk
+
+main {
+  padding: 1rem;
+}
+
+h2 {font-family: 'Freestyle Script', Times, serif, sans-serif;
+    font-size: 3rem;
+    color: rgb(8, 9, 10);
+}
+
+.produk-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.produk {
+  background-color: rgb(250, 250, 250);
+  border: 1px solid #fdfbfb;
+  padding: 1rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(6, 6, 6, 0.1);
+}
+
+.produk img {
+  width: 100%;
+  height: auto;
+}
+
+ img {
+  width: 20%;
+  height: auto;
+}
+
+form input, form textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+form input[type="submit"] {
+  background-color: #657df5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-top: 1rem;
+}
+label{color: #0e0c0c;}
+
+@media (max-width: 768px) {
+  .produk-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
